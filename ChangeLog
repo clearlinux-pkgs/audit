@@ -1,3 +1,18 @@
+2.7.7
+- Make ausearch a little more robust to bad time values
+- Aureport's login report was corrected to print the loginuid (#1448526)
+- In auparse_nomalize, add SUBJ_KIND metadata
+- In auparse_nomalize, adjust USER_ERR mapping
+- Fix queue_error_action in audisp-remote.conf (#1455594)
+- Fix aureport to identify seccomp and anom_abend events in anomaly report
+- In auparse, don't do euid permission check use file permissions
+- Fix auparse python binding to support AUSOURCE_DESCRIPTOR
+- Rename auparse normalizer python binding function to aup_normalize_object_kind
+- Add python bindings for auparse_nomalize_subject_kind
+- Fixup all auparse python bindings return codes and documentation
+- Fix interpretaion of fe field of BPRM_FCAPS record. (Richard Guy Briggs)
+- Various error reporting fixups in auditctl and libaudit (Richard Guy Briggs)
+
 2.7.6
 - In auparse_nomalize, assign user-login as the event kind for AUDIT_LOGIN
 - In auparse_normalize, move GRP_AUTH to its own event kind, group-change

@@ -128,6 +128,7 @@ libauparse.so.0:auparse_normalize_object_primary
 libauparse.so.0:auparse_normalize_object_secondary
 libauparse.so.0:auparse_normalize_session
 libauparse.so.0:auparse_normalize_subject_first_attribute
+libauparse.so.0:auparse_normalize_subject_kind
 libauparse.so.0:auparse_normalize_subject_next_attribute
 libauparse.so.0:auparse_normalize_subject_primary
 libauparse.so.0:auparse_normalize_subject_secondary
