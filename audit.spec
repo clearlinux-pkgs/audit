@@ -4,13 +4,14 @@
 #
 Name     : audit
 Version  : 2.7.7
-Release  : 5
+Release  : 6
 URL      : https://people.redhat.com/sgrubb/audit/audit-2.7.7.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-2.7.7.tar.gz
 Summary  : User space tools for 2.6 kernel auditing
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ LGPL-2.1 LGPL-2.1+
 Requires: audit-bin
+Requires: audit-legacypython
 Requires: audit-python
 Requires: audit-lib
 Requires: audit-doc
@@ -53,6 +54,14 @@ Group: Documentation
 doc components for the audit package.
 
 
+%package legacypython
+Summary: legacypython components for the audit package.
+Group: Default
+
+%description legacypython
+legacypython components for the audit package.
+
+
 %package lib
 Summary: lib components for the audit package.
 Group: Libraries
@@ -64,6 +73,7 @@ lib components for the audit package.
 %package python
 Summary: python components for the audit package.
 Group: Default
+Requires: audit-legacypython
 
 %description python
 python components for the audit package.
@@ -77,7 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1497782436
+export SOURCE_DATE_EPOCH=1504998140
 %configure --disable-static
 make V=1
 
@@ -89,7 +99,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1497782436
+export SOURCE_DATE_EPOCH=1504998140
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
@@ -133,6 +143,10 @@ chmod a+x %{buildroot}/usr/bin/audispd
 %doc /usr/share/man/man7/*
 %doc /usr/share/man/man8/*
 
+%files legacypython
+%defattr(-,root,root,-)
+/usr/lib/python2*/*
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libaudit.so.1
@@ -142,5 +156,4 @@ chmod a+x %{buildroot}/usr/bin/audispd
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python2*/*
 /usr/lib/python3*/*

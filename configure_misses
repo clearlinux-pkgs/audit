@@ -1,0 +1,13 @@
+Configure miss: sys/event.h usability
+Configure miss: sys/event.h presence
+Configure miss: sys/event.h
+Configure miss: port.h usability
+Configure miss: port.h presence
+Configure miss: port.h
+Configure miss: port_create
+Configure miss: whether to include alpha processor support
+Configure miss: whether to include arm eabi processor support
+Configure miss: whether to include aarch64 processor support
+Configure miss: whether to use apparmor
+Configure miss: whether to use prelude
+Configure miss: whether to use libwrap
