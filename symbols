@@ -111,6 +111,7 @@ libauparse.so.0:auparse_goto_record_num
 libauparse.so.0:auparse_init
 libauparse.so.0:auparse_interp_adjust_type
 libauparse.so.0:auparse_interpret_field
+libauparse.so.0:auparse_interpret_realpath
 libauparse.so.0:auparse_next_event
 libauparse.so.0:auparse_next_field
 libauparse.so.0:auparse_next_record
