@@ -1,3 +1,15 @@
+2.8.2
+- Update tables for 4.14 kernel
+- Fixup ipv6 server side binding
+- AVC report from aureport was missing result column header (#1511606)
+- Add SOFTWARE_UPDATE event
+- In ausearch/report pickup any path and new-disk fields as a file
+- Fix value returned by auditctl --reset-lost (Richard Guy Briggs)
+- In auparse, fix expr_create_timestamp_comparison_ex to be numeric field
+- Fix building on old systems without linux/fanotify.h
+- Fix shell portability issues reported by shellcheck
+- Auditd validate_email should not use gethostbyname
+
 2.8.1
 - Fix NULL ptr dereference in audispd plugin_dir parser
 - Signed/unsigned cleanup
