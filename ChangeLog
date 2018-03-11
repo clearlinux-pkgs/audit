@@ -1,3 +1,15 @@
+2.8.3
+- Correct msg function name in lru debug code
+- Fix a segfault in auditd when dns resolution isn't available
+- Make a reload legacy service for auditd
+- In auparse python bindings, expose some new types that were missing
+- In normalizer, pickup subject kind for user_login events
+- Fix interpretation of unknown ioctcmds (#1540507)
+- Add ANOM_LOGIN_SERVICE, RESP_ORIGIN_BLOCK, & RESP_ORIGIN_BLOCK_TIMED events
+- In auparse_normalize for USER_LOGIN events, map acct for subj_kind
+- Fix logging of IPv6 addresses in DAEMON_ACCEPT events (#1534748)
+- Do not rotate auditd logs when num_logs < 2 (brozs)
+
 2.8.2
 - Update tables for 4.14 kernel
 - Fixup ipv6 server side binding
