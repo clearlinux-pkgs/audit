@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 2.8.3
-Release  : 17
+Release  : 18
 URL      : https://people.redhat.com/sgrubb/audit/audit-2.8.3.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-2.8.3.tar.gz
 Summary  : User space tools for 2.6 kernel auditing
