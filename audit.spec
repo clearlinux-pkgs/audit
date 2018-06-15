@@ -25,7 +25,7 @@ BuildRequires : libtool-dev
 BuildRequires : m4
 BuildRequires : openldap-dev
 BuildRequires : pkg-config-dev
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : swig
 Patch1: 0001-Update-for-usr-bin-python-as-python3.patch
