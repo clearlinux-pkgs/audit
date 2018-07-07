@@ -1,3 +1,14 @@
+2.8.4
+- Generate checkpoint file even when not results are returned (Burn Alting)
+- Fix log file creation when file logging is disabled entirely (Vlad Glagolev)
+- Use SIGCONT to dump auditd internal state (#1504251)
+- Fix parsing of virtual timestamp fields in ausearch_expression (#1515903)
+- Fix parsing of uid & success for ausearch
+- Hide lru symbols in auparse
+- Fix aureport summary time range reporting
+- Allow unlimited retries on startup for remote logging
+- Add queue_depth to remote logging stats and increase default queue_depth size
+
 2.8.3
 - Correct msg function name in lru debug code
 - Fix a segfault in auditd when dns resolution isn't available
