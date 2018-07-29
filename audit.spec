@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 2.8.4
-Release  : 27
+Release  : 30
 URL      : https://people.redhat.com/sgrubb/audit/audit-2.8.4.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-2.8.4.tar.gz
 Summary  : User space tools for 2.6 kernel auditing
@@ -18,8 +18,8 @@ Requires: audit-man
 Requires: audit-python
 BuildRequires : automake
 BuildRequires : automake-dev
+BuildRequires : buildreq-golang
 BuildRequires : gettext-bin
-BuildRequires : go
 BuildRequires : libcap-ng-dev
 BuildRequires : libtool
 BuildRequires : libtool-dev
@@ -108,7 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530987790
+export SOURCE_DATE_EPOCH=1532883711
 %reconfigure --disable-static
 make
 
@@ -120,7 +120,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1530987790
+export SOURCE_DATE_EPOCH=1532883711
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/audit
 cp COPYING.LIB %{buildroot}/usr/share/doc/audit/COPYING.LIB
@@ -159,21 +159,6 @@ chmod a+x %{buildroot}/usr/bin/audispd
 /usr/lib64/pkgconfig/audit.pc
 /usr/lib64/pkgconfig/auparse.pc
 /usr/share/aclocal/*.m4
-
-%files lib
-%defattr(-,root,root,-)
-/usr/lib64/libaudit.so.1
-/usr/lib64/libaudit.so.1.0.0
-/usr/lib64/libauparse.so.0
-/usr/lib64/libauparse.so.0.0.0
-
-%files license
-%defattr(-,root,root,-)
-/usr/share/doc/audit/COPYING
-/usr/share/doc/audit/COPYING.LIB
-
-%files man
-%defattr(-,root,root,-)
 /usr/share/man/man3/audit_add_rule_data.3
 /usr/share/man/man3/audit_add_watch.3
 /usr/share/man/man3/audit_delete_rule_data.3
@@ -252,6 +237,21 @@ chmod a+x %{buildroot}/usr/bin/audispd
 /usr/share/man/man3/ausearch_set_stop.3
 /usr/share/man/man3/get_auditfail_action.3
 /usr/share/man/man3/set_aumessage_mode.3
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libaudit.so.1
+/usr/lib64/libaudit.so.1.0.0
+/usr/lib64/libauparse.so.0
+/usr/lib64/libauparse.so.0.0.0
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/audit/COPYING
+/usr/share/doc/audit/COPYING.LIB
+
+%files man
+%defattr(-,root,root,-)
 /usr/share/man/man5/audisp-remote.conf.5
 /usr/share/man/man5/audispd.conf.5
 /usr/share/man/man5/auditd.conf.5
