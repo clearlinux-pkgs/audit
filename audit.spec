@@ -4,18 +4,19 @@
 #
 Name     : audit
 Version  : 2.8.4
-Release  : 32
+Release  : 33
 URL      : https://people.redhat.com/sgrubb/audit/audit-2.8.4.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-2.8.4.tar.gz
 Summary  : User space tools for 2.6 kernel auditing
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ LGPL-2.1 LGPL-2.1+
-Requires: audit-bin
-Requires: audit-python3
-Requires: audit-lib
-Requires: audit-license
-Requires: audit-man
-Requires: audit-python
+Requires: audit-bin = %{version}-%{release}
+Requires: audit-lib = %{version}-%{release}
+Requires: audit-license = %{version}-%{release}
+Requires: audit-man = %{version}-%{release}
+Requires: audit-python = %{version}-%{release}
+Requires: audit-python3 = %{version}-%{release}
+Requires: audisp-json
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : buildreq-golang
@@ -38,8 +39,8 @@ the audit subsystem in the Linux 2.6 and later kernels.
 %package bin
 Summary: bin components for the audit package.
 Group: Binaries
-Requires: audit-license
-Requires: audit-man
+Requires: audit-license = %{version}-%{release}
+Requires: audit-man = %{version}-%{release}
 
 %description bin
 bin components for the audit package.
@@ -48,9 +49,9 @@ bin components for the audit package.
 %package dev
 Summary: dev components for the audit package.
 Group: Development
-Requires: audit-lib
-Requires: audit-bin
-Provides: audit-devel
+Requires: audit-lib = %{version}-%{release}
+Requires: audit-bin = %{version}-%{release}
+Provides: audit-devel = %{version}-%{release}
 
 %description dev
 dev components for the audit package.
@@ -59,7 +60,7 @@ dev components for the audit package.
 %package lib
 Summary: lib components for the audit package.
 Group: Libraries
-Requires: audit-license
+Requires: audit-license = %{version}-%{release}
 
 %description lib
 lib components for the audit package.
@@ -84,7 +85,7 @@ man components for the audit package.
 %package python
 Summary: python components for the audit package.
 Group: Default
-Requires: audit-python3
+Requires: audit-python3 = %{version}-%{release}
 
 %description python
 python components for the audit package.
@@ -108,7 +109,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532883711
+export SOURCE_DATE_EPOCH=1547179782
 %reconfigure --disable-static
 make
 
@@ -120,16 +121,16 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1532883711
+export SOURCE_DATE_EPOCH=1547179782
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/audit
-cp COPYING.LIB %{buildroot}/usr/share/doc/audit/COPYING.LIB
-cp COPYING %{buildroot}/usr/share/doc/audit/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/audit
+cp COPYING %{buildroot}/usr/share/package-licenses/audit/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/audit/COPYING.LIB
 %make_install
-## make_install_append content
+## install_append content
 chmod a+x %{buildroot}/usr/bin/augenrules
 chmod a+x %{buildroot}/usr/bin/audispd
-## make_install_append end
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -246,12 +247,12 @@ chmod a+x %{buildroot}/usr/bin/audispd
 /usr/lib64/libauparse.so.0.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/audit/COPYING
-/usr/share/doc/audit/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/audit/COPYING
+/usr/share/package-licenses/audit/COPYING.LIB
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man5/audisp-remote.conf.5
 /usr/share/man/man5/audispd.conf.5
 /usr/share/man/man5/auditd.conf.5
