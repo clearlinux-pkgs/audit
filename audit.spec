@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 2.8.4
-Release  : 34
+Release  : 35
 URL      : https://people.redhat.com/sgrubb/audit/audit-2.8.4.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-2.8.4.tar.gz
 Summary  : User space tools for 2.6 kernel auditing
@@ -40,7 +40,6 @@ the audit subsystem in the Linux 2.6 and later kernels.
 Summary: bin components for the audit package.
 Group: Binaries
 Requires: audit-license = %{version}-%{release}
-Requires: audit-man = %{version}-%{release}
 
 %description bin
 bin components for the audit package.
@@ -52,6 +51,7 @@ Group: Development
 Requires: audit-lib = %{version}-%{release}
 Requires: audit-bin = %{version}-%{release}
 Provides: audit-devel = %{version}-%{release}
+Requires: audit = %{version}-%{release}
 
 %description dev
 dev components for the audit package.
@@ -109,7 +109,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547179782
+export SOURCE_DATE_EPOCH=1552150440
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %reconfigure --disable-static
 make
 
@@ -121,7 +122,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1547179782
+export SOURCE_DATE_EPOCH=1552150440
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/audit
 cp COPYING %{buildroot}/usr/share/package-licenses/audit/COPYING
