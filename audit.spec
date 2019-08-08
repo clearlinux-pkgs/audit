@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 2.8.5
-Release  : 38
+Release  : 39
 URL      : https://people.redhat.com/sgrubb/audit/audit-2.8.5.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-2.8.5.tar.gz
 Summary  : User space tools for 2.6 kernel auditing
@@ -12,11 +12,14 @@ Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+ LGPL-2.1 LGPL-2.1+
 Requires: audit-bin = %{version}-%{release}
 Requires: audit-lib = %{version}-%{release}
+Requires: audit-libexec = %{version}-%{release}
 Requires: audit-license = %{version}-%{release}
 Requires: audit-man = %{version}-%{release}
 Requires: audit-python = %{version}-%{release}
 Requires: audit-python3 = %{version}-%{release}
+Requires: audit-services = %{version}-%{release}
 Requires: audisp-json
+BuildRequires : audisp-json
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : buildreq-golang
@@ -39,7 +42,9 @@ the audit subsystem in the Linux 2.6 and later kernels.
 %package bin
 Summary: bin components for the audit package.
 Group: Binaries
+Requires: audit-libexec = %{version}-%{release}
 Requires: audit-license = %{version}-%{release}
+Requires: audit-services = %{version}-%{release}
 
 %description bin
 bin components for the audit package.
@@ -60,10 +65,20 @@ dev components for the audit package.
 %package lib
 Summary: lib components for the audit package.
 Group: Libraries
+Requires: audit-libexec = %{version}-%{release}
 Requires: audit-license = %{version}-%{release}
 
 %description lib
 lib components for the audit package.
+
+
+%package libexec
+Summary: libexec components for the audit package.
+Group: Default
+Requires: audit-license = %{version}-%{release}
+
+%description libexec
+libexec components for the audit package.
 
 
 %package license
@@ -100,6 +115,14 @@ Requires: python3-core
 python3 components for the audit package.
 
 
+%package services
+Summary: services components for the audit package.
+Group: Systemd services
+
+%description services
+services components for the audit package.
+
+
 %prep
 %setup -q -n audit-2.8.5
 %patch1 -p1
@@ -108,21 +131,25 @@ python3 components for the audit package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552575664
-export LDFLAGS="${LDFLAGS} -fno-lto"
-%reconfigure --disable-static
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1565288139
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+%reconfigure --disable-static --enable-systemd
 make
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1552575664
+export SOURCE_DATE_EPOCH=1565288139
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/audit
 cp COPYING %{buildroot}/usr/share/package-licenses/audit/COPYING
@@ -247,6 +274,16 @@ chmod a+x %{buildroot}/usr/bin/audispd
 /usr/lib64/libauparse.so.0
 /usr/lib64/libauparse.so.0.0.0
 
+%files libexec
+%defattr(-,root,root,-)
+/usr/libexec/initscripts/legacy-actions/auditd/condrestart
+/usr/libexec/initscripts/legacy-actions/auditd/reload
+/usr/libexec/initscripts/legacy-actions/auditd/restart
+/usr/libexec/initscripts/legacy-actions/auditd/resume
+/usr/libexec/initscripts/legacy-actions/auditd/rotate
+/usr/libexec/initscripts/legacy-actions/auditd/state
+/usr/libexec/initscripts/legacy-actions/auditd/stop
+
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/audit/COPYING
@@ -281,3 +318,7 @@ chmod a+x %{buildroot}/usr/bin/audispd
 %files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
+
+%files services
+%defattr(-,root,root,-)
+/usr/lib/systemd/system/auditd.service
