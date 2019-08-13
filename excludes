@@ -1,2 +1,9 @@
 # This file contains the output files that need %exclude. Full path
 # names, one per line.
+/usr/libexec/initscripts/legacy-actions/auditd/condrestart
+/usr/libexec/initscripts/legacy-actions/auditd/reload
+/usr/libexec/initscripts/legacy-actions/auditd/restart
+/usr/libexec/initscripts/legacy-actions/auditd/resume
+/usr/libexec/initscripts/legacy-actions/auditd/rotate
+/usr/libexec/initscripts/legacy-actions/auditd/state
+/usr/libexec/initscripts/legacy-actions/auditd/stop
