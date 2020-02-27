@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 2.8.5
-Release  : 42
+Release  : 43
 URL      : https://people.redhat.com/sgrubb/audit/audit-2.8.5.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-2.8.5.tar.gz
 Summary  : User space tools for 2.6 kernel auditing
@@ -54,6 +54,7 @@ Group: Development
 Requires: audit-lib = %{version}-%{release}
 Requires: audit-bin = %{version}-%{release}
 Provides: audit-devel = %{version}-%{release}
+Requires: audit = %{version}-%{release}
 Requires: audit = %{version}-%{release}
 
 %description dev
@@ -113,6 +114,7 @@ services components for the audit package.
 
 %prep
 %setup -q -n audit-2.8.5
+cd %{_builddir}/audit-2.8.5
 %patch1 -p1
 
 %build
@@ -120,7 +122,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565722460
+export SOURCE_DATE_EPOCH=1582847723
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -137,11 +140,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 check
 
 %install
-export SOURCE_DATE_EPOCH=1565722460
+export SOURCE_DATE_EPOCH=1582847723
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/audit
-cp COPYING %{buildroot}/usr/share/package-licenses/audit/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/package-licenses/audit/COPYING.LIB
+cp %{_builddir}/audit-2.8.5/COPYING %{buildroot}/usr/share/package-licenses/audit/dfac199a7539a404407098a2541b9482279f690d
+cp %{_builddir}/audit-2.8.5/COPYING.LIB %{buildroot}/usr/share/package-licenses/audit/3ac522f07da0f346b37b29cd73a60f79e992ffba
 %make_install
 ## Remove excluded files
 rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/condrestart
@@ -154,6 +157,7 @@ rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/stop
 ## install_append content
 chmod a+x %{buildroot}/usr/bin/augenrules
 chmod a+x %{buildroot}/usr/bin/audispd
+
 ## install_append end
 
 %files
@@ -178,7 +182,9 @@ chmod a+x %{buildroot}/usr/bin/audispd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/auparse-defs.h
+/usr/include/auparse.h
+/usr/include/libaudit.h
 /usr/lib64/libaudit.so
 /usr/lib64/libauparse.so
 /usr/lib64/pkgconfig/audit.pc
@@ -272,8 +278,8 @@ chmod a+x %{buildroot}/usr/bin/audispd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/audit/COPYING
-/usr/share/package-licenses/audit/COPYING.LIB
+/usr/share/package-licenses/audit/3ac522f07da0f346b37b29cd73a60f79e992ffba
+/usr/share/package-licenses/audit/dfac199a7539a404407098a2541b9482279f690d
 
 %files man
 %defattr(0644,root,root,0755)
