@@ -87,6 +87,7 @@ libauparse.so.0:auparse_do_interpretation
 libauparse.so.0:auparse_feed
 libauparse.so.0:auparse_feed_age_events
 libauparse.so.0:auparse_feed_has_data
+libauparse.so.0:auparse_feed_has_ready_event
 libauparse.so.0:auparse_find_field
 libauparse.so.0:auparse_find_field_next
 libauparse.so.0:auparse_first_field
