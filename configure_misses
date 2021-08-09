@@ -1,3 +1,4 @@
+Configure miss: library containing pthread_yield
 Configure miss: port.h
 Configure miss: port.h presence
 Configure miss: port.h usability
