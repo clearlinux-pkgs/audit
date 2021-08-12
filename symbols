@@ -77,6 +77,7 @@ libaudit.so.1:audit_update_watch_perms
 libaudit.so.1:audit_value_needs_encoding
 libaudit.so.1:get_auditfail_action
 libaudit.so.1:set_aumessage_mode
+libauparse.so.0:_auparse_flush_caches
 libauparse.so.0:_auparse_free_interpretations
 libauparse.so.0:_auparse_load_interpretations
 libauparse.so.0:_auparse_lookup_interpretation
