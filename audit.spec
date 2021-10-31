@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 3.0.6
-Release  : 62
+Release  : 63
 URL      : https://people.redhat.com/sgrubb/audit/audit-3.0.6.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-3.0.6.tar.gz
 Summary  : User space tools for kernel auditing
@@ -124,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633108178
+export SOURCE_DATE_EPOCH=1635705175
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -143,20 +143,20 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1633108178
+export SOURCE_DATE_EPOCH=1635705175
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/audit
 cp %{_builddir}/audit-3.0.6/COPYING %{buildroot}/usr/share/package-licenses/audit/dfac199a7539a404407098a2541b9482279f690d
 cp %{_builddir}/audit-3.0.6/COPYING.LIB %{buildroot}/usr/share/package-licenses/audit/3ac522f07da0f346b37b29cd73a60f79e992ffba
 %make_install
 ## Remove excluded files
-rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/condrestart
-rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/reload
-rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/restart
-rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/resume
-rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/rotate
-rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/state
-rm -f %{buildroot}/usr/libexec/initscripts/legacy-actions/auditd/stop
+rm -f %{buildroot}*/usr/libexec/initscripts/legacy-actions/auditd/condrestart
+rm -f %{buildroot}*/usr/libexec/initscripts/legacy-actions/auditd/reload
+rm -f %{buildroot}*/usr/libexec/initscripts/legacy-actions/auditd/restart
+rm -f %{buildroot}*/usr/libexec/initscripts/legacy-actions/auditd/resume
+rm -f %{buildroot}*/usr/libexec/initscripts/legacy-actions/auditd/rotate
+rm -f %{buildroot}*/usr/libexec/initscripts/legacy-actions/auditd/state
+rm -f %{buildroot}*/usr/libexec/initscripts/legacy-actions/auditd/stop
 ## install_append content
 chmod a+x %{buildroot}/usr/bin/augenrules
 ## install_append end
