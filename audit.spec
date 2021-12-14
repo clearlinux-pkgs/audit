@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 3.0.6
-Release  : 63
+Release  : 64
 URL      : https://people.redhat.com/sgrubb/audit/audit-3.0.6.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-3.0.6.tar.gz
 Summary  : User space tools for kernel auditing
