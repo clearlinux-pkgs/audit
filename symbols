@@ -1,6 +1,5 @@
 libaudit.so.1:__audit_send
 libaudit.so.1:audit_action_to_name
-libaudit.so.1:audit_add_dir
 libaudit.so.1:audit_add_rule_data
 libaudit.so.1:audit_add_watch
 libaudit.so.1:audit_add_watch_dir
