@@ -1,5 +1,11 @@
 Configure miss: library containing pthread_yield
 Configure miss: library containing pthread_yield
+Configure miss: linux/ipx.h
+Configure miss: linux/ipx.h
+Configure miss: linux/ipx.h presence
+Configure miss: linux/ipx.h presence
+Configure miss: linux/ipx.h usability
+Configure miss: linux/ipx.h usability
 Configure miss: port.h
 Configure miss: port.h
 Configure miss: port.h presence
