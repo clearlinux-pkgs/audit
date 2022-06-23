@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 3.0.8
-Release  : 69
+Release  : 70
 URL      : https://people.redhat.com/sgrubb/audit/audit-3.0.8.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-3.0.8.tar.gz
 Summary  : User space tools for kernel auditing
@@ -116,7 +116,6 @@ man components for the audit package.
 Summary: python components for the audit package.
 Group: Default
 Requires: audit-python3 = %{version}-%{release}
-Requires: audit-filemap = %{version}-%{release}
 
 %description python
 python components for the audit package.
@@ -125,6 +124,7 @@ python components for the audit package.
 %package python3
 Summary: python3 components for the audit package.
 Group: Default
+Requires: audit-filemap = %{version}-%{release}
 Requires: python3-core
 
 %description python3
@@ -151,7 +151,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1649265740
+export SOURCE_DATE_EPOCH=1656006280
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -184,7 +184,7 @@ cd ../buildavx2;
 make check || :
 
 %install
-export SOURCE_DATE_EPOCH=1649265740
+export SOURCE_DATE_EPOCH=1656006280
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/audit
 cp %{_builddir}/audit-3.0.8/COPYING %{buildroot}/usr/share/package-licenses/audit/dfac199a7539a404407098a2541b9482279f690d
@@ -204,7 +204,7 @@ rm -f %{buildroot}*/usr/libexec/initscripts/legacy-actions/auditd/stop
 ## install_append content
 chmod a+x %{buildroot}/usr/bin/augenrules
 ## install_append end
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -376,11 +376,16 @@ chmod a+x %{buildroot}/usr/bin/augenrules
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libaudit.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libaudit.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libaudit.so.1.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libauparse.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libauparse.so.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libauparse.so.0.0.0
 /usr/lib64/libaudit.so.1
 /usr/lib64/libaudit.so.1.0.0
 /usr/lib64/libauparse.so.0
 /usr/lib64/libauparse.so.0.0.0
-/usr/share/clear/optimized-elf/lib*
 /usr/share/clear/optimized-elf/other*
 
 %files libexec
