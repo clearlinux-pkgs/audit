@@ -4,7 +4,7 @@
 #
 Name     : audit
 Version  : 3.0.8
-Release  : 70
+Release  : 71
 URL      : https://people.redhat.com/sgrubb/audit/audit-3.0.8.tar.gz
 Source0  : https://people.redhat.com/sgrubb/audit/audit-3.0.8.tar.gz
 Summary  : User space tools for kernel auditing
@@ -151,7 +151,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656006280
+export SOURCE_DATE_EPOCH=1656090790
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -184,7 +184,7 @@ cd ../buildavx2;
 make check || :
 
 %install
-export SOURCE_DATE_EPOCH=1656006280
+export SOURCE_DATE_EPOCH=1656090790
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/audit
 cp %{_builddir}/audit-3.0.8/COPYING %{buildroot}/usr/share/package-licenses/audit/dfac199a7539a404407098a2541b9482279f690d
