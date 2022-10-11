@@ -1,5 +1,5 @@
 PKG_NAME := audit
-URL = https://people.redhat.com/sgrubb/audit/audit-3.0.8.tar.gz
+URL = https://people.redhat.com/sgrubb/audit/audit-3.0.9.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

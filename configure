@@ -1,3 +1,4 @@
 --enable-systemd
+--without-golang
 --without-python
---with-python3
+--without-python3

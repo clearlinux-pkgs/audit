@@ -1,27 +1,21 @@
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: library containing pthread_yield
 Configure miss: library containing pthread_yield
 Configure miss: linux/ipx.h
 Configure miss: linux/ipx.h
-Configure miss: linux/ipx.h presence
-Configure miss: linux/ipx.h presence
-Configure miss: linux/ipx.h usability
-Configure miss: linux/ipx.h usability
 Configure miss: port.h
 Configure miss: port.h
-Configure miss: port.h presence
-Configure miss: port.h presence
-Configure miss: port.h usability
-Configure miss: port.h usability
 Configure miss: port_create
 Configure miss: port_create
 Configure miss: sys/event.h
 Configure miss: sys/event.h
-Configure miss: sys/event.h presence
-Configure miss: sys/event.h presence
-Configure miss: sys/event.h usability
-Configure miss: sys/event.h usability
+Configure miss: whether to create Go language bindings
+Configure miss: whether to create Go language bindings
 Configure miss: whether to create python bindings
 Configure miss: whether to create python bindings
+Configure miss: whether to create python3 bindings
+Configure miss: whether to create python3 bindings
 Configure miss: whether to enable experimental options
 Configure miss: whether to enable experimental options
 Configure miss: whether to include aarch64 processor support
@@ -32,3 +26,5 @@ Configure miss: whether to use apparmor
 Configure miss: whether to use apparmor
 Configure miss: whether to use libwrap
 Configure miss: whether to use libwrap
+Configure miss: x86_64-generic-linux-gnu-file
+Configure miss: x86_64-generic-linux-gnu-file
